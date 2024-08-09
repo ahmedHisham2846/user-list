@@ -1,0 +1,14 @@
+<div class="pt-3 ps-3 w-100 bg-blue-300 flex justify-center gap-5">
+    <button [routerLink]="'/user/list'" mat-fab id="back-btn" class="!hidden">
+        <mat-icon>keyboard_backspace</mat-icon>
+    </button>
+    <mat-form-field class="!m-0 w-1/2 !text-xl " appearance="outline">
+        <mat-label class="!text-xl">Search By User ID</mat-label>
+        <input type="text" placeholder="Pick one" aria-label="Search" matInput [formControl]="myControl" [matAutocomplete]="UserAutoComplete">
+        <mat-autocomplete (optionSelected)="userSelected($event)"  [displayWith]="displayFn" #UserAutoComplete="matAutocomplete">
+            <mat-option *ngIf="filteredUser" [value]="filteredUser">{{filteredUser | userFullName}}</mat-option>
+        </mat-autocomplete>
+        <mat-icon *ngIf="!(loaderSVC.isLoading | async)" matSuffix>search</mat-icon>
+        <mat-spinner *ngIf="loaderSVC.isLoading | async" matSuffix></mat-spinner>
+    </mat-form-field>
+</div>

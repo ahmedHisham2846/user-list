@@ -1,0 +1,18 @@
+<mat-card class="max-w-96" appearance="outlined">
+    <mat-card-header>
+        <div mat-card-avatar>
+            <img mat-card-avatar [src]="user().avatar">
+        </div>
+        <mat-card-title>
+            <a [routerLink]="'/user/details/' + user().id" class="no-underline font-medium">
+                {{user() | userFullName}}
+            </a>
+        </mat-card-title>
+        <mat-card-subtitle>
+            <span class="!text-slate-400">ID: {{user().id}}</span>
+        </mat-card-subtitle>
+    </mat-card-header>
+    <mat-card-content>
+        <p class="text-xl p-2 rounded bg-blue-500 text-white">{{user().email}}</p>
+    </mat-card-content>
+</mat-card>
